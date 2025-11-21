@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>realwidget</title>
+    <script src="/static/socket.io.min.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="mobile-web-app-capable" content="yes">
+</head>
+<body>
+    <div class="workspace_container">
+        <pre id="workspace">一</pre>
+    </div>
+
+    <script>
+        const socket = io();
+        const workspaces_kanji = [
+            "一",
+            "二",
+            "三",
+            "四",
+            "五",
+            "六",
+            "七",
+            "八",
+            "九",
+            "十"
+        ]
+
+        socket.on("workspace", (data) => {
+            document.getElementById(`workspace`).textContent = workspaces_kanji[data.id - 1];
+        });
+    </script>
+</body>
+</html>
+
